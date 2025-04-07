@@ -1,31 +1,34 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import Projects from './pages/Projects';
+import Teams from './pages/Teams';
+import Analytics from './pages/Analytics';
+import Messages from './pages/Messages';
+import Integrations from './pages/Integrations.jsx';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
-import MetricCard from './components/MetricCard';
-import DetailedReport from './components/DetailedReport';
 
 function App() {
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
-      <Sidebar />
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col">
-        <Header />
-        <div className="p-6">
-          {/* Metrics Section */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
-            <MetricCard title="Turnover" value="$92,405" change="-5.39% period of change" />
-            <MetricCard title="Profit" value="$32,218" change="-5.39% period of change" />
-            <MetricCard title="New Customers" value="298" change="+6.84% period of change" />
-          </div>
-
-          {/* Detailed Report */}
-          <DetailedReport />
+    <Router>
+      <div className="flex h-screen bg-gray-100">
+        <Sidebar />
+        <div className="flex flex-col flex-1 overflow-hidden">
+          <Header />
+          <main className="flex-1 overflow-y-auto p-4">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/teams" element={<Teams />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/messages" element={<Messages />} />
+              <Route path="/integrations" element={<Integrations />} />
+            </Routes>
+          </main>
         </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
