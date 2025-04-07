@@ -5,6 +5,7 @@ import EditUserModal from '../components/EditUserModal';
 import AddUserModal from '../components/AddUserModal';
 import { fetchCustomers, updateCustomer, addCustomer } from '../api/Customer.jsx';
 import daidien from '../assets/daidien.jpg';
+import Overview from '../api/Overview.jsx';
 
 const Dashboard = () => {
   const [customers, setCustomers] = useState([]);
@@ -125,29 +126,10 @@ const Dashboard = () => {
   
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <MetricCard 
-          title="Turnover"
-          value="$92,405"
-          change={5.39}
-          icon="shop"
-          color="bg-pink-50 text-pink-500"
+     
+        <Overview
         />
-        <MetricCard 
-          title="Profit"
-          value="$32,218"
-          change={5.39}
-          icon="dollar"
-          color="bg-blue-50 text-blue-500"
-        />
-        <MetricCard 
-          title="New customer"
-          value="298"
-          change={6.84}
-          icon="users"
-          color="bg-indigo-50 text-indigo-500"
-        />
-      </div>
+      
       
       <div className="bg-white rounded-lg shadow">
         <div className="p-4 flex items-center justify-between border-b">

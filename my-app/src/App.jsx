@@ -8,6 +8,7 @@ import Messages from './pages/Messages';
 import Integrations from './pages/Integrations.jsx';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
+import 'font-awesome/css/font-awesome.min.css';
 
 function App() {
   return (
