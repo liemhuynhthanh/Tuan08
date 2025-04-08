@@ -31,31 +31,22 @@ export const addCustomer = async (customerData) => {
 };
 
 // Update an existing customer
-export const updateCustomer = async (customerData) => {
-  try {
-    const response = await fetch(`${API_URL}/${customerData.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(customerData)
-    });
-    if (!response.ok) throw new Error('Failed to update customer');
-    return await response.json();
-  } catch (error) {
-    console.error('Error updating customer:', error);
-    throw error;
+export const updateCustomer = async (id, data) => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    const errorMessage = await response.text();
+    console.error("Error response:", errorMessage);
+    throw new Error('Failed to update customer');
   }
+
+  return await response.json();
 };
 
-// Delete a customer
-export const deleteCustomer = async (customerId) => {
-  try {
-    const response = await fetch(`${API_URL}/${customerId}`, {
-      method: 'DELETE'
-    });
-    if (!response.ok) throw new Error('Failed to delete customer');
-    return { success: true, id: customerId };
-  } catch (error) {
-    console.error('Error deleting customer:', error);
-    throw error;
-  }
-};
+
+
+

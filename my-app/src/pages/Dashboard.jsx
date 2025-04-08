@@ -43,7 +43,9 @@ const Dashboard = () => {
   
   const handleUpdateCustomer = async (updatedCustomer) => {
     try {
-      await updateCustomer(updatedCustomer.id, updatedCustomer);
+      await updateCustomer(String(updatedCustomer.id), updatedCustomer);
+
+ // ← chỉ truyền 1 object
       setCustomers(
         customers.map(customer => 
           customer.id === updatedCustomer.id ? updatedCustomer : customer
@@ -54,6 +56,7 @@ const Dashboard = () => {
       setError('Failed to update customer');
     }
   };
+  
   
   const handleAddCustomer = async (newCustomer) => {
     try {
