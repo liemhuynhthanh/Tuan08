@@ -105,7 +105,7 @@ const AddUserModal = ({ onClose, onAdd }) => {
                 onChange={handleChange}
                 required
                 min="0"
-                step="0.01"
+                step="1"
                 className="mt-1 block w-full border px-3 py-2 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
               />
             </div>
